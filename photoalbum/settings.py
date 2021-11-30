@@ -58,8 +58,11 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django_cleanup.apps.CleanupConfig',
 
+    'django_extensions',
+
     # Custom Apps
     'users',
+    'photos'
 ]
 
 MIDDLEWARE = [
