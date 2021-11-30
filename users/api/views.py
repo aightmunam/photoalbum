@@ -1,10 +1,10 @@
+from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAdminUser
 
 from users.models import User
-from .serializers import UserSerializer
-from .serializers import RegisterSerializer
+
 from .permissions import IsOwnerOrAdmin
-from rest_framework import generics
+from .serializers import RegisterSerializer, UserSerializer
 
 
 class UserRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):

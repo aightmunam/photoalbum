@@ -3,7 +3,7 @@ Serializers for all the models of photos
 """
 from rest_framework import serializers
 
-from photos.models import Photo, Album
+from photos.models import Album, Photo
 
 
 class PhotoSerializer(serializers.ModelSerializer):

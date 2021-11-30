@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
 import photos.models
+
 from .tasks import log_update_history_task
 
 

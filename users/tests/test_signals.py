@@ -1,10 +1,10 @@
 """
 Test all the signals for the users app
 """
-import pytest
 import mock
+import pytest
 
-from photos.tests.factories import PhotoFactory, AlbumFactory
+from photos.tests.factories import AlbumFactory, PhotoFactory
 from users.tests.factories import UserFactory
 
 

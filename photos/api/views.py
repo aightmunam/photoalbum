@@ -1,20 +1,21 @@
 """
 All the api views for the photos app
 """
+from django.contrib.auth import get_user_model
 from django.http import Http404
 from django.views.generic.detail import SingleObjectMixin
+from rest_framework import status, viewsets
 from rest_framework.generics import get_object_or_404
-from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, \
-    CreateModelMixin
+from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
+                                   ListModelMixin, RetrieveModelMixin,
+                                   UpdateModelMixin)
 from rest_framework.response import Response
-from rest_framework.viewsets import GenericViewSet, ViewSet, ModelViewSet
-
-from .permissions import IsAuthenticatedOwner
-from .serializers import PhotoSerializer, AlbumDisplaySerializer, AlbumWriteSerializer
-from rest_framework import viewsets, status
-from django.contrib.auth import get_user_model
+from rest_framework.viewsets import GenericViewSet, ModelViewSet, ViewSet
 
 from ..models import Album
+from .permissions import IsAuthenticatedOwner
+from .serializers import (AlbumDisplaySerializer, AlbumWriteSerializer,
+                          PhotoSerializer)
 
 User = get_user_model()
 

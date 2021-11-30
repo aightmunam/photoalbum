@@ -1,8 +1,8 @@
 import json
 
-from photoalbum.celery import app
-
 from celery.utils.log import get_task_logger
+
+from photoalbum.celery import app
 
 from .models import UpdateHistory, User
 

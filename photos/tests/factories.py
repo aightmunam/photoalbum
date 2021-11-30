@@ -1,10 +1,10 @@
 import factory
+from django.core.files.base import ContentFile
+from factory.django import DjangoModelFactory
 from faker import Faker
 from faker.providers import file
-from factory.django import DjangoModelFactory
-from django.core.files.base import ContentFile
 
-from photos.models import Photo, Album
+from photos.models import Album, Photo
 from users.tests.factories import UserFactory
 
 

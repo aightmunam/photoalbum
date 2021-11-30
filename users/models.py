@@ -1,12 +1,13 @@
 """
 Models for the users app
 """
-from django.contrib.auth.models import AbstractUser
-from django.urls import reverse
-from django.db import models
-from model_utils.models import TimeStampedModel
-from jsonfield.fields import JSONField
 from collections import OrderedDict
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.urls import reverse
+from jsonfield.fields import JSONField
+from model_utils.models import TimeStampedModel
 
 
 class User(AbstractUser):

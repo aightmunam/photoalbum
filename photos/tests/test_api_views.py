@@ -2,9 +2,9 @@
 Test that the serializer works correctly
 """
 import pytest
-
 from django.urls import reverse
 from rest_framework import status
+
 from users.tests.factories import UserFactory
 
 from .factories import AlbumFactory

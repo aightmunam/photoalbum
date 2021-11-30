@@ -2,8 +2,7 @@ from django.conf.urls import url
 from django.urls import include
 from rest_framework.routers import DefaultRouter
 
-from photos.api.views import PhotoViewSet, AlbumViewSet
-
+from photos.api.views import AlbumViewSet, PhotoViewSet
 
 router = DefaultRouter()
 

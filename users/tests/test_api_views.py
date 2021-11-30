@@ -4,9 +4,11 @@ Test the users api
 
 import pytest
 from django.urls import reverse
-from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST, HTTP_200_OK, HTTP_403_FORBIDDEN
+from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
+                                   HTTP_400_BAD_REQUEST, HTTP_403_FORBIDDEN)
 
-from users.api.constants import DUPLICATE_EMAIL, DUPLICATE_USERNAME, DUMMY_NAME, JSON_CONTENT_TYPE
+from users.api.constants import (DUMMY_NAME, DUPLICATE_EMAIL,
+                                 DUPLICATE_USERNAME, JSON_CONTENT_TYPE)
 from users.tests.factories import UserFactory
 
 
