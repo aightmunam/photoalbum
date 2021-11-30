@@ -19,4 +19,7 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(UpdateHistory)
 class UpdateHistoryAdmin(admin.ModelAdmin):
+    """
+    Admin for UpdateHistory model
+    """
     list_display = ['user', 'created', 'modified']

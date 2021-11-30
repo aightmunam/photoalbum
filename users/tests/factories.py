@@ -1,3 +1,6 @@
+"""
+Factories for users app
+"""
 from typing import Any, Sequence
 
 from django.contrib.auth import get_user_model
@@ -6,7 +9,9 @@ from factory.django import DjangoModelFactory
 
 
 class UserFactory(DjangoModelFactory):
-
+    """
+    Generate a User object for testing purposes with dummy data
+    """
     username = Faker("user_name")
     email = Faker("email")
     first_name = Faker("name")

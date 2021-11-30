@@ -35,10 +35,16 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return self.request.user.get_absolute_url()
 
     def get_object(self):
+        """
+        Get the user object
+        """
         return self.request.user
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
+    """
+    View to redirect users to profile page
+    """
 
     permanent = False
 

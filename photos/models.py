@@ -9,6 +9,9 @@ from model_utils.models import TimeStampedModel
 
 
 def get_upload_location(instance, filename):
+    """
+    Set the file upload location
+    """
     _, extension = os.path.splitext(filename)
     return f'{instance.owner.username}/{instance.title}{extension}'
 
@@ -42,6 +45,9 @@ class Photo(TimeStampedModel):
 
     @property
     def auth(self):
+        """
+        Return the id of the user associated with this object
+        """
         return self.owner.id
 
 
@@ -76,4 +82,7 @@ class Album(TimeStampedModel):
 
     @property
     def auth(self):
+        """
+        Return the id of the user associated with this object
+        """
         return self.owner.id

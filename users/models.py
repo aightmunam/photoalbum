@@ -35,6 +35,9 @@ class User(AbstractUser):
 
     @property
     def auth(self):
+        """
+        Returns the user associated to this object i.e self
+        """
         return self.id
 
 

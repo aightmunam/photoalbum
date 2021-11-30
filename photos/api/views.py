@@ -2,15 +2,8 @@
 All the api views for the photos app
 """
 from django.contrib.auth import get_user_model
-from django.http import Http404
-from django.views.generic.detail import SingleObjectMixin
-from rest_framework import status, viewsets
-from rest_framework.generics import get_object_or_404
-from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
-                                   ListModelMixin, RetrieveModelMixin,
-                                   UpdateModelMixin)
-from rest_framework.response import Response
-from rest_framework.viewsets import GenericViewSet, ModelViewSet, ViewSet
+from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 
 from ..models import Album
 from .permissions import IsAuthenticatedOwner
@@ -73,4 +66,3 @@ class AlbumViewSet(SetCurrentUserAsOwnerOnCreateUpdate, ModelViewSet):
         Get all the albums of the logged in user
         """
         return self.request.user.albums.all()
-

@@ -1,3 +1,6 @@
+"""
+Celery config for the project
+"""
 import os
 
 from celery import Celery

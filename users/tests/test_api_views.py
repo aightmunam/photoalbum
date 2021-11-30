@@ -4,11 +4,19 @@ Test the users api
 
 import pytest
 from django.urls import reverse
-from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
-                                   HTTP_400_BAD_REQUEST, HTTP_403_FORBIDDEN)
+from rest_framework.status import (
+    HTTP_200_OK,
+    HTTP_201_CREATED,
+    HTTP_400_BAD_REQUEST,
+    HTTP_403_FORBIDDEN
+)
 
-from users.api.constants import (DUMMY_NAME, DUPLICATE_EMAIL,
-                                 DUPLICATE_USERNAME, JSON_CONTENT_TYPE)
+from users.api.constants import (
+    DUMMY_NAME,
+    DUPLICATE_EMAIL,
+    DUPLICATE_USERNAME,
+    JSON_CONTENT_TYPE
+)
 from users.tests.factories import UserFactory
 
 
@@ -26,7 +34,14 @@ from users.tests.factories import UserFactory
     'no-email-provided',
     'duplicate-email-provided'
 ])
-def test_user_register_api(client, username, password, confirm_password, email, expected_response):
+def test_user_register_api(
+        client,
+        username,
+        password,
+        confirm_password,
+        email,
+        expected_response
+):
     """
     Test that the user can be created
     """
@@ -89,4 +104,3 @@ def test_user_update_api(client, is_owner, is_admin, expected_response, method):
     if method in ['put', 'patch'] and expected_response == HTTP_200_OK:
         assert user_to_update.first_name == DUMMY_NAME
         assert user_to_update.last_name == DUMMY_NAME
-

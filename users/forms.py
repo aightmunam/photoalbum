@@ -9,11 +9,17 @@ User = get_user_model()
 
 
 class UserChangeForm(admin_forms.UserChangeForm):
+    """
+    Form to cater user updation
+    """
     class Meta(admin_forms.UserChangeForm.Meta):
         model = User
 
 
 class UserCreationForm(admin_forms.UserCreationForm):
+    """
+    Form to cater user creation
+    """
     class Meta(admin_forms.UserCreationForm.Meta):
         model = User
 

@@ -47,4 +47,3 @@ def test_album_rename(logged_in_client):
     album.refresh_from_db()
     assert response.status_code == status.HTTP_200_OK
     assert album.name == changed_name
-

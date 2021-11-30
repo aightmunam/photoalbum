@@ -1,8 +1,9 @@
+"""
+Factories for the photos app
+"""
 import factory
-from django.core.files.base import ContentFile
 from factory.django import DjangoModelFactory
 from faker import Faker
-from faker.providers import file
 
 from photos.models import Album, Photo
 from users.tests.factories import UserFactory
@@ -33,4 +34,3 @@ class AlbumFactory(DjangoModelFactory):
     name = factory.Faker('word')
     photos = factory.RelatedFactoryList(PhotoFactory)
     owner = factory.SubFactory(UserFactory)
-

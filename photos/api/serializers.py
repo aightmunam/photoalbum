@@ -54,5 +54,3 @@ class AlbumDisplaySerializer(serializers.ModelSerializer):
     class Meta:
         model = Album
         fields = ('id', 'name', 'photos')
-
-
