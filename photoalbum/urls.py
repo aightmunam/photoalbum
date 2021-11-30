@@ -17,9 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from rest_framework.authtoken.views import obtain_auth_token
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     path('users/', include('users.urls', namespace='users')),
+]
+
+urlpatterns += [
+    # DRF auth token
+    path("auth-token/", obtain_auth_token),
 ]

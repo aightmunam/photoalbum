@@ -55,12 +55,16 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
 
+    'whitenoise.runserver_nostatic',
+    'django_cleanup.apps.CleanupConfig',
+
     # Custom Apps
     'users',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
