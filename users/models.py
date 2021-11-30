@@ -14,12 +14,27 @@ class User(AbstractUser):
     Custom user
     """
 
+    def to_dict(self):
+        """
+        Dict representation to add to the logs
+        """
+        return {
+            'username': self.username,
+            'email': self.email,
+            'first_name': self.first_name,
+            'last_name': self.last_name
+        }
+
     def get_absolute_url(self):
         """Get url for user's detail view.
         Returns:
             str: URL for user detail.
         """
         return reverse("users:detail", kwargs={"username": self.username})
+
+    @property
+    def auth(self):
+        return self.id
 
 
 class UpdateHistory(TimeStampedModel):
@@ -30,7 +45,13 @@ class UpdateHistory(TimeStampedModel):
         site (ForeignKey): foreign-key to User
         site_values (JSONField): json field to store history updates for a user
     """
-    user = models.ForeignKey(User, related_name='update_history', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User,
+        related_name='update_histories',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
     update_values = JSONField(
         null=False,
         blank=True,

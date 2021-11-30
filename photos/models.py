@@ -29,6 +29,21 @@ class Photo(TimeStampedModel):
     def __str__(self):
         return f'{self.id}  ({self.title} - {self.owner})'
 
+    def to_dict(self):
+        """
+        Dict representation to add to the logs
+        """
+        return {
+            'id': self.id,
+            'title': self.title,
+            'image': self.image.path,
+            'owner': self.owner.username
+        }
+
+    @property
+    def auth(self):
+        return self.owner.id
+
 
 class Album(TimeStampedModel):
     """
@@ -44,3 +59,21 @@ class Album(TimeStampedModel):
 
     # allowing empty albums
     photos = models.ManyToManyField(Photo, related_name='albums')
+
+    def __str__(self):
+        return f'{self.id} ({self.name} - {self.owner})'
+
+    def to_dict(self):
+        """
+        Dict representation to add to the logs
+        """
+        return {
+            'id': self.id,
+            'name': self.name,
+            'owner': self.owner.username,
+            'photos': list(self.photos.values_list('id', flat=True))
+        }
+
+    @property
+    def auth(self):
+        return self.owner.id
