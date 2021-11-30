@@ -49,10 +49,14 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
 
+    "crispy_forms",
+    "crispy_bootstrap5",
+
     'allauth',
     'allauth.account',
 
     # Custom Apps
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +89,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'photoalbum.wsgi.application'
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#form-renderer
+# FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+
+# http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -122,6 +132,12 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
+# https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
+AUTH_USER_MODEL = "users.User"
+# https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
+LOGIN_REDIRECT_URL = "users:redirect"
+# https://docs.djangoproject.com/en/dev/ref/settings/#login-url
+LOGIN_URL = "account_login"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -167,6 +183,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ALLOW_REGISTRATION = True
 ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_ADAPTER = "users.adapters.AccountAdapter"
 
 
 # Django Rest Framework
