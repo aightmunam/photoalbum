@@ -13,8 +13,8 @@ router.register("albums", AlbumViewSet, basename='album')
 
 
 app_name = "api"
-# urlpatterns = router.urls
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^users/', include('users.api.urls')),
 ]
