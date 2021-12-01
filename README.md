@@ -28,8 +28,8 @@ sudo mysql -u root -p  // This will open the mysql console
 mysql> CREATE DATABASE <db_name>;
 mysql> CREATE USER <db_user> IDENTIFIED WITH mysql_native_password BY <db_password>;
 mysql> GRANT ALL ON <db_name>.* TO <db_user>;
+mysql> GRANT ALL ON test_<db_name>.* TO <db_user>;
 mysql> FLUSH PRIVILEGES;
-
 ```
 Once all three have been made, we need to export the following variables into our environment as:
 ```
