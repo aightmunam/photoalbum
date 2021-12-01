@@ -1,5 +1,10 @@
 # photoalbum
 
+The APIs have been documented and can be seen here: [API Docs](https://documenter.getpostman.com/view/18593548/UVJeFbkB)
+
+### Project Setup
+
+
 1. Clone this repo
 ```
 git clone https://github.com/aightmunam/photoalbum.git
