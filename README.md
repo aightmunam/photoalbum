@@ -29,18 +29,25 @@ the root directory of this project containing the above code.
 ```
 docker run --name my-redis-server -d -p 127.0.0.1:6379:6379 redis
 ```
-7. After the redis server is up, we need to export another variable to the environment or add it to the `.env`
+7. After the redis server is up, we need to export another variable to the environment or add it to the `.env` file
 ```
 CELERY_BROKER_URL=redis://localhost:6379
 ```
-
-8. Now, we need to run the database migrations and run the django server
+8. We need to generate and add a variable `SECRET_KEY` to our environment that will act as the project's secret key.
+```
+python -c "import secrets; print(secrets.token_urlsafe())" 
+```
+This command will generate a key, now simply export it into the environment or add it to the `.env` file.
+```
+SECRET_KEY= # Add generated key here
+```
+9. Now, we need to run the database migrations and run the django server
 ```
 python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-9. Then in a second terminal window, navigate to your project directory, activate the virtual environment again and run
+10. Then in a second terminal window, navigate to your project directory, activate the virtual environment again and run
 the celery process
 ```
 python3 -m celery -A photoalbum worker -l info -P solo
