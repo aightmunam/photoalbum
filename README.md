@@ -16,7 +16,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 5. Create your MySQL database and user to be used with this project. You will need DB name, DB user with access to this DB, 
-and the password. Once all three have been made, we need to export the following variables into our environment
+and the password. 
+```
+sudo mysql -u root -p  // This will open the mysql console
+
+mysql> CREATE DATABASE <db_name>;
+mysql> CREATE USER <db_user> IDENTIFIED WITH mysql_native_password BY <db_password>;
+mysql> GRANT ALL ON <db_name>.* TO <db_user>;
+mysql> FLUSH PRIVILEGES;
+
+```
+Once all three have been made, we need to export the following variables into our environment as:
 ```
 DATABASE_NAME=<db_name>
 DATABASE_USER=<db_user>
