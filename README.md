@@ -62,14 +62,3 @@ the celery process
 ```
 python3 -m celery -A photoalbum worker -l info -P solo
 ```
-
-11. Now, open the django shell as:
-```
-python3 manage.py shell
-```
-Inside the shell, type the following
-
-```
-> from django.contrib.sites.models import Site
-> Site.objects.create(name='example.com', domain='example.com')
-```
