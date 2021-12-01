@@ -1,0 +1,1852 @@
+{
+	"info": {
+		"_postman_id": "0c8b84d3-1c45-4a00-99ef-6fbc8d524210",
+		"name": "photoalbum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register a new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "",
+									"description": "A unique username",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/register/new",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register",
+								"new"
+							]
+						},
+						"description": "Allow a user to create a new account. The user must provide\n- `username` (unique & required)\n- `email` (unique, optional)\n- `first_name` (optional)\n- `last_name` (optional)\n- `password`\n- `password2`\n\n*Note: `password` and `password2` must match.*"
+					},
+					"response": [
+						{
+							"name": "New user registered successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"dummy_user\",\n    \"password\": \"test password\",\n    \"password2\": \"test password\",\n    \"email\": \"test_dummy@example.com\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"Test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/register/new",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"register",
+										"new"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 03:33:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"username\": \"dummy_user\",\n    \"email\": \"test_dummy@example.com\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"Test\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth_token}}",
+								"description": "Auth token for the user. Only a user themself or an admin can view the details",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						},
+						"description": "Get all the details of a user. \n\n*Note: Only an admin or the user themselves have the permission to access this url.*"
+					},
+					"response": [
+						{
+							"name": "User fetched successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user. Only a user themself or an admin can view the details",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:40:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"munam\",\n    \"email\": \"\",\n    \"first_name\": \"Munam\",\n    \"last_name\": \"Mubashir\"\n}"
+						},
+						{
+							"name": "User does not have permission. Only an admin or the user themselves can view their account",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 20dfb67c0856817c90db2c1ceee30d3b1272f9f7",
+										"description": "Auth token for the user. Only a user themself or an admin can view the details",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 03:44:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"You do not have permission to perform this action.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "{{$randomUserName}}",
+									"description": "Unique username",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{$randomExampleEmail}}",
+									"description": "Unique email",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "{{$randomFirstName}}",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "{{$randomLastName}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{user_id}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								""
+							]
+						},
+						"description": "Update the details of a user. \n\n*Note: Only an admin or the user themselves have the permission to access this url.*"
+					},
+					"response": [
+						{
+							"name": "Successfully updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{$randomUserName}}",
+											"description": "Unique username",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "{{$randomExampleEmail}}",
+											"description": "Unique email",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "{{$randomFirstName}}",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "{{$randomLastName}}",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 03:54:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "113"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"username\": \"Guy_Feil\",\n    \"email\": \"Annabelle.Corwin77@example.com\",\n    \"first_name\": \"Dana\",\n    \"last_name\": \"Ritchie\"\n}"
+						},
+						{
+							"name": "Non-owner cannot update some other user's account info",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"description": "a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "{{$randomUserName}}",
+											"description": "Unique username",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "{{$randomExampleEmail}}",
+											"description": "Unique email",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "{{$randomFirstName}}",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "{{$randomLastName}}",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:52:42 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"You do not have permission to perform this action.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						},
+						"description": "Delete a user account.\n\n*Note: Only an admin or the user themselves have the permission to delete a user.*"
+					},
+					"response": [
+						{
+							"name": "Successfully deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/4",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"4"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 03:57:32 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "Users API allows a user to \n- register. `/api/users/register/new` (POST)\n- get user details. `/api/users/<id>` (GET)\n- update user details. `/api/users/<id>` (PUT, PATCH)\n- delete user account. `/api/users/<id>` (DELETE)\n\n###### *Note: Only an admin or the user themselves can view or update or delete their user account.*"
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "Get all photos for the current user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null,
+						"description": "Get all the Photos associated with the current user. A user can only access and modify their own Photos."
+					},
+					"response": [
+						{
+							"name": "List of photo objects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/photos/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"photos",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 03:59:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "797"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\n        \"title\": \"TET\",\n        \"image\": \"http://localhost:8000/media/munam/TET.png\"\n    },\n    {\n        \"id\": \"7f9135a8-4878-4575-9a7a-b9b68fd4d406\",\n        \"title\": \"ABC\",\n        \"image\": \"http://localhost:8000/media/munam/ABC.png\"\n    },\n    {\n        \"id\": \"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\",\n        \"title\": \"ads\",\n        \"image\": \"http://localhost:8000/media/munam/ads.png\"\n    },\n    {\n        \"id\": \"bd2f1d64-f01d-483e-8b31-0a04ca86c256\",\n        \"title\": \"TETw\",\n        \"image\": \"http://localhost:8000/media/munam/TETw.png\"\n    },\n    {\n        \"id\": \"c3748c99-72c4-48bc-95bb-486366185ad8\",\n        \"title\": \"ABCD\",\n        \"image\": \"http://localhost:8000/media/munam/ABCD.png\"\n    },\n    {\n        \"id\": \"c375abb9-307a-46a4-9393-5acbc2ed3d7f\",\n        \"title\": \"ABC\",\n        \"image\": \"http://localhost:8000/media/munam/ABC_odQ3yZ9.png\"\n    },\n    {\n        \"id\": \"f2fe7611-a1d4-4f58-a70a-cac9adce1e7a\",\n        \"title\": \"123\",\n        \"image\": \"http://localhost:8000/media/munam/123.png\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get a specific photo for the current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/photos/{{photo_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photos",
+								"{{photo_id}}"
+							]
+						},
+						"description": "Get a specific Photo of the user by the ID. If the ID belongs to a photo that the user does not own, it will not be accessible."
+					},
+					"response": [
+						{
+							"name": "Specific photo for the current user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/photos/47bd7555-7219-4147-b32f-9d9a5c1f89c1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"photos",
+										"47bd7555-7219-4147-b32f-9d9a5c1f89c1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:02:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\n    \"title\": \"TET\",\n    \"image\": \"http://localhost:8000/media/munam/TET.png\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a new photo for current user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "{{$randomWord}}",
+									"description": "Title of the Photo",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "Image for the Photo",
+									"type": "file",
+									"src": "/Users/munammubashir/Desktop/test.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/photos/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photos",
+								""
+							]
+						},
+						"description": "Add a new photo for the current user. The current user is marked as the owner of the Photo."
+					},
+					"response": [
+						{
+							"name": "Photo added successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{{$randomWord}}",
+											"description": "Title of the Photo",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "Image for the Photo",
+											"type": "file",
+											"src": "/Users/munammubashir/Desktop/test.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/photos/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"photos",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:06:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "128"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"48645da1-21f8-41e1-bbd7-a39130f361ad\",\n    \"title\": \"withdrawal\",\n    \"image\": \"http://localhost:8000/media/testing3/withdrawal.png\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a specific photo for the current user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "{{$randomWord}}",
+									"description": "Updated title",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/photos/{{photo_id}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photos",
+								"{{photo_id}}",
+								""
+							]
+						},
+						"description": "Update a specific Photo of the user by ID. If the ID belongs to a photo that the user does not own, it will not be accessible."
+					},
+					"response": [
+						{
+							"name": "Photo updated successfully",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{{$randomWord}}",
+											"description": "Updated title",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/photos/48645da1-21f8-41e1-bbd7-a39130f361ad/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"photos",
+										"48645da1-21f8-41e1-bbd7-a39130f361ad",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:09:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"48645da1-21f8-41e1-bbd7-a39130f361ad\",\n    \"title\": \"reinvent\",\n    \"image\": \"http://localhost:8000/media/testing3/withdrawal.png\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a photo for the current user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/photos/{{photo_id}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"photos",
+								"{{photo_id}}",
+								""
+							]
+						},
+						"description": "Delete a specific Photo of the user by the ID. If the ID belongs to a photo that the user does not own, it will not be deleted."
+					},
+					"response": [
+						{
+							"name": "Photo deleted successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/photos/48645da1-21f8-41e1-bbd7-a39130f361ad/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"photos",
+										"48645da1-21f8-41e1-bbd7-a39130f361ad",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:12:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Non-owner user fails to delete some other user's Photo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"description": "Auth token not belonging to the owner of the photo",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/photos/bd2f1d64-f01d-483e-8b31-0a04ca86c256/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"photos",
+										"bd2f1d64-f01d-483e-8b31-0a04ca86c256",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:50:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Not found.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Photos API allows a user to \n- get all their photos. `/api/photos/` (GET)\n- add a new Photo. `/api/photos` (POST)\n- get a specific Photo. `/api/photos/<id>` (GET)\n- update a specific Photo. `/api/photos/<id>` (PUT, PATCH)\n- delete a specific Photo. `/api/photos/<id>` (DELETE)\n\n###### *Note: A user can only access, update, and delete the photos belonging to them.*"
+		},
+		{
+			"name": "Albums",
+			"item": [
+				{
+					"name": "Get all albums for the current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								""
+							]
+						},
+						"description": "Get all the Albums that belong to the current user."
+					},
+					"response": [
+						{
+							"name": "List of album objects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/albums",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"albums"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:14:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "546"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"02a94a8c-fd91-4134-89b2-1e86a86681a9\",\n        \"name\": \"\",\n        \"photos\": [\n            {\n                \"id\": \"7f9135a8-4878-4575-9a7a-b9b68fd4d406\",\n                \"title\": \"ABC\",\n                \"image\": \"http://localhost:8000/media/munam/ABC.png\"\n            }\n        ]\n    },\n    {\n        \"id\": \"2d17dbd7-7296-4617-88f8-0e381c3c3589\",\n        \"name\": \"New\",\n        \"photos\": [\n            {\n                \"id\": \"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\n                \"title\": \"TET\",\n                \"image\": \"http://localhost:8000/media/munam/TET.png\"\n            }\n        ]\n    },\n    {\n        \"id\": \"4b628db3-8a41-46ff-8741-4e317ad3a2c1\",\n        \"name\": \"Named\",\n        \"photos\": [\n            {\n                \"id\": \"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\n                \"title\": \"TET\",\n                \"image\": \"http://localhost:8000/media/munam/TET.png\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new album for the current user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomWord}}\",\n    \"photos\": [\"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\"] // Must be a list of valid distinct (no duplicates) IDs for Photo objects belonging to the current user\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								""
+							]
+						},
+						"description": "Add a new album for the current user. The current user is marked as the owner of the Album.\n\nA list of Photo IDs can be added to an Album. However, if any of the ID does not belong to the current user, it results in an error. Duplicate photos in an album are not allowed."
+					},
+					"response": [
+						{
+							"name": "Album added successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"{{$randomWord}}\",\n    \"photos\": [\"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/albums/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"albums",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:22:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f397e1ea-6317-41c1-b9b3-a2fac89ef620\",\n    \"name\": \"Proactive\",\n    \"photos\": [\n        \"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\n        \"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a specific album for the current user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}"
+							]
+						},
+						"description": "Get a specific Album of the user by the ID. If the ID belongs to an Album that the user does not own, it will not be accessible."
+					},
+					"response": [
+						{
+							"name": "Specific album for the current user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/albums/02a94a8c-fd91-4134-89b2-1e86a86681a9",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"albums",
+										"02a94a8c-fd91-4134-89b2-1e86a86681a9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:16:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"02a94a8c-fd91-4134-89b2-1e86a86681a9\",\n    \"name\": \"\",\n    \"photos\": [\n        {\n            \"id\": \"7f9135a8-4878-4575-9a7a-b9b68fd4d406\",\n            \"title\": \"ABC\",\n            \"image\": \"http://localhost:8000/media/munam/ABC.png\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a specific album for the current user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomWords}}\",\n    \"photos\": [\"47bd7555-7219-4147-b32f-9d9a5c1f89c1\", \"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\", \"bd2f1d64-f01d-483e-8b31-0a04ca86c256\"] // Must be a list of valid distinct (no duplicates) IDs for Photo objects belonging to the current user\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}",
+								""
+							]
+						},
+						"description": "Update a specific Album of the user by the ID. If the ID belongs to an Album that the user does not own, it will not be accessible."
+					},
+					"response": [
+						{
+							"name": "Album renamed and new photo added successfully",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"description": "Auth token for the user",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"{{$randomWords}}\",\n    \"photos\": [\"47bd7555-7219-4147-b32f-9d9a5c1f89c1\", \"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\", \"bd2f1d64-f01d-483e-8b31-0a04ca86c256\"] \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/albums/f397e1ea-6317-41c1-b9b3-a2fac89ef620/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"albums",
+										"f397e1ea-6317-41c1-b9b3-a2fac89ef620",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:36:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f397e1ea-6317-41c1-b9b3-a2fac89ef620\",\n    \"name\": \"white Wisconsin withdrawal RAM navigate\",\n    \"photos\": [\n        \"47bd7555-7219-4147-b32f-9d9a5c1f89c1\",\n        \"ab1bb225-e56f-4ca7-b6b6-79e3ab9933b6\",\n        \"bd2f1d64-f01d-483e-8b31-0a04ca86c256\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a specific album for the current user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{auth token}}",
+								"description": "Auth token for the user",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/albums/{{album_id}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"albums",
+								"{{album_id}}",
+								""
+							]
+						},
+						"description": "Delete a specific Album of the user by the ID. If the ID belongs to an Album that the user does not own, it will not be deleted."
+					},
+					"response": [
+						{
+							"name": "Specified Album deleted successfully",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token ef8640b6d3c0603c1cc12a08ae856771820fac9e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/albums/f397e1ea-6317-41c1-b9b3-a2fac89ef620/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"albums",
+										"f397e1ea-6317-41c1-b9b3-a2fac89ef620",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:45:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Non-owner user fails to delete some other user's album",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a7569baf5653752d9f27b77d78f908b7e6d54d40",
+										"description": "Auth token not belonging to the owner of the album",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/albums/4b628db3-8a41-46ff-8741-4e317ad3a2c1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"albums",
+										"4b628db3-8a41-46ff-8741-4e317ad3a2c1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 01 Dec 2021 04:47:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Not found.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Albums API allows a user to \n- get all their albums. `/api/albums/` (GET)\n- add a new Album. `/api/albums/` (POST)\n- get a specific Album. `/api/albums/<id>` (GET)\n- update a specific Album. `/api/albums/<id>` (PUT, PATCH)\n- delete a specific Album. `/api/albums/<id>` (DELETE)\n\n###### *Note: A user can only access, update, and delete the albums belonging to them.*"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:8000"
+		}
+	]
+}
