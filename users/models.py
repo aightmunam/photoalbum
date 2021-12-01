@@ -56,6 +56,7 @@ class UpdateHistory(TimeStampedModel):
         blank=True,
         null=True
     )
+    description = models.CharField(max_length=300, blank=True, null=True)
     update_values = JSONField(
         null=False,
         blank=True,

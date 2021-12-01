@@ -4,19 +4,11 @@ Test the users api
 
 import pytest
 from django.urls import reverse
-from rest_framework.status import (
-    HTTP_200_OK,
-    HTTP_201_CREATED,
-    HTTP_400_BAD_REQUEST,
-    HTTP_403_FORBIDDEN
-)
+from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
+                                   HTTP_400_BAD_REQUEST, HTTP_403_FORBIDDEN)
 
-from users.api.constants import (
-    DUMMY_NAME,
-    DUPLICATE_EMAIL,
-    DUPLICATE_USERNAME,
-    JSON_CONTENT_TYPE
-)
+from users.api.constants import (DUMMY_NAME, DUPLICATE_EMAIL,
+                                 DUPLICATE_USERNAME, JSON_CONTENT_TYPE)
 from users.tests.factories import UserFactory
 
 
@@ -48,7 +40,7 @@ def test_user_register_api(
     UserFactory(username=DUPLICATE_USERNAME, email=DUPLICATE_EMAIL)
 
     response = client.post(
-        reverse('api:users:register'),
+        reverse('api:register'),
         data={
             'username': username,
             'password': password,
@@ -88,7 +80,7 @@ def test_user_update_api(client, is_owner, is_admin, expected_response, method):
 
     action = getattr(client, method)
     response = action(
-        reverse('api:users:detail', kwargs={'pk': user_to_update.pk}),
+        reverse('api:detail', kwargs={'pk': user_to_update.pk}),
         data={
             'first_name': DUMMY_NAME,
             'last_name': DUMMY_NAME,

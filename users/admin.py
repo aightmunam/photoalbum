@@ -22,4 +22,4 @@ class UpdateHistoryAdmin(admin.ModelAdmin):
     """
     Admin for UpdateHistory model
     """
-    list_display = ['user', 'created', 'modified']
+    list_display = ['user', 'description', 'created', 'modified']

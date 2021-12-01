@@ -4,9 +4,9 @@ Factories for the photos app
 import factory
 from factory.django import DjangoModelFactory
 from faker import Faker
+from users.tests.factories import UserFactory
 
 from photos.models import Album, Photo
-from users.tests.factories import UserFactory
 
 
 class PhotoFactory(DjangoModelFactory):
