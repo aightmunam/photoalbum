@@ -46,14 +46,13 @@ class UpdateHistory(TimeStampedModel):
     Model so that we can maintain a history of changes.
 
     Fields:
-        site (ForeignKey): foreign-key to User
-        site_values (JSONField): json field to store history updates for a user
+        user (ForeignKey): foreign-key to User
+        update_values (JSONField): json field to store history updates for a user
     """
     user = models.ForeignKey(
         User,
         related_name='update_histories',
         on_delete=models.CASCADE,
-        blank=True,
         null=True
     )
     description = models.CharField(max_length=300, blank=True, null=True)
